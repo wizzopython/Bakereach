@@ -4,8 +4,8 @@ import { Cake, Lock, User } from 'lucide-react';
 import './SuperadminLogin.css';
 
 const SuperadminLogin = () => {
-  const [username, setUsername] = useState('superadmin');
-  const [password, setPassword] = useState('password');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
