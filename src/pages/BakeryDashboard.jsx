@@ -235,12 +235,17 @@ const BakeryDashboard = () => {
 
       <aside className={`bakery-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div>
-          <div className="sidebar-header">
-            <img src={bakery.banner} alt="Logo" className="sidebar-logo" />
-            <div className="sidebar-title-container">
-              <h1 className="sidebar-title">{bakery.name}</h1>
-              <span className="premium-tag sidebar-plan-tag">{bakery.plan} Plan</span>
+          <div className="sidebar-header flex justify-between items-center w-full">
+            <div className="flex items-center gap-3">
+              <img src={bakery.banner} alt="Logo" className="sidebar-logo" />
+              <div className="sidebar-title-container">
+                <h1 className="sidebar-title">{bakery.name}</h1>
+                <span className="premium-tag sidebar-plan-tag">{bakery.plan} Plan</span>
+              </div>
             </div>
+            <button className="mobile-sidebar-close" onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={24} />
+            </button>
           </div>
           <nav className="sidebar-nav">
             <button onClick={() => { setActiveTab('overview'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='overview'?'active':''}`}>

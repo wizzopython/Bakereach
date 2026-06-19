@@ -1,14 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Workflow, Store, Settings, LogOut, Users, CreditCard, Image as ImageIcon, HeadphonesIcon } from 'lucide-react';
+import { LayoutDashboard, Workflow, Store, Settings, LogOut, Users, CreditCard, Image as ImageIcon, HeadphonesIcon, X } from 'lucide-react';
 import './Sidebar.css';
 
 const Sidebar = ({ onLogout, isOpen, onClose }) => {
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-      <div className="sidebar-header">
-        <div className="logo-icon">BR</div>
-        <h1 className="logo-text">BakeReach</h1>
+      <div className="sidebar-header flex justify-between items-center w-full">
+        <div className="flex items-center gap-3">
+          <div className="logo-icon">BR</div>
+          <h1 className="logo-text">BakeReach</h1>
+        </div>
+        <button className="mobile-sidebar-close" onClick={onClose}>
+          <X size={24} />
+        </button>
       </div>
       
       <nav className="sidebar-nav">

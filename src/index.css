@@ -208,7 +208,7 @@ select.form-input {
 }
 
 /* Mobile Header Base Styles */
-.mobile-header, .sidebar-mobile-overlay {
+.mobile-header, .sidebar-mobile-overlay, .mobile-sidebar-close {
   display: none;
 }
 
@@ -258,6 +258,20 @@ select.form-input {
     padding: 0.5rem;
   }
   
+  .mobile-sidebar-close {
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+  .mobile-sidebar-close:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+  
   .sidebar-mobile-overlay {
     display: block;
     position: fixed;
@@ -276,6 +290,7 @@ select.form-input {
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+    background: white !important;
   }
   
   .bakery-sidebar.open, .sidebar.open {
