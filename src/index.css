@@ -226,12 +226,13 @@ select.form-input {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
-    position: relative;
-    z-index: 40;
+    position: sticky;
+    top: 0;
+    z-index: 100 !important;
   }
   
   .mobile-header-logo {
@@ -276,9 +277,9 @@ select.form-input {
     display: block;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
-    z-index: 990;
+    z-index: 1040 !important;
   }
   
   .bakery-sidebar, .sidebar {
@@ -289,12 +290,28 @@ select.form-input {
     width: 280px !important;
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000 !important;
-    background: white !important;
+    z-index: 1050 !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  .sidebar-header {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    padding-right: 1rem !important;
+  }
+  
+  .config-card, .portal-section, .glass-panel {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
   }
   
   .bakery-sidebar.open, .sidebar.open {
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
   
   .sidebar-nav {
@@ -356,6 +373,7 @@ select.form-input {
   .premium-flow-node {
     width: 100% !important;
     max-width: 320px;
+    box-sizing: border-box !important;
   }
 
   .premium-flow-connection {
@@ -406,7 +424,14 @@ select.form-input {
     gap: 1rem !important;
   }
   
-  .search-box {
+  .glass-panel .flex.justify-between,
+  .config-card .flex.justify-between,
+  .glass-panel .flex.items-center.gap-3 {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+  
+  .search-box, .glass-panel .relative input[type="text"] {
     width: 100% !important;
   }
   
