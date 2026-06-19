@@ -4,8 +4,8 @@ import { Store, KeyRound, ArrowRight, Phone, Lock } from 'lucide-react';
 import './BakeryLogin.css';
 
 const BakeryLogin = () => {
-  const [mobile, setMobile] = useState('');
-  const [password, setPassword] = useState('');
+  const [mobile, setMobile] = useState('+1 234 567 8900');
+  const [password, setPassword] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
