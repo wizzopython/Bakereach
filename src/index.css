@@ -320,6 +320,15 @@ select.form-input {
     width: 100% !important;
     max-width: 100% !important;
     overflow: hidden !important;
+    position: static !important; /* Prevent sticky overlapping on mobile */
+  }
+  
+  [style*="gridColumn: 'span"] , [style*="grid-column: span"] {
+    grid-column: span 1 !important;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr !important;
   }
   
   .bakery-sidebar.open, .sidebar.open {
@@ -445,10 +454,6 @@ select.form-input {
   
   .search-box, .glass-panel .relative input[type="text"] {
     width: 100% !important;
-  }
-  
-  .premium-table-container {
-    overflow-x: auto !important;
   }
   
   /* Inbox specific fixes */

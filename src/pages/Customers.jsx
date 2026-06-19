@@ -156,47 +156,49 @@ const Customers = () => {
           </div>
         </div>
 
-        <table className="premium-table">
-          <thead>
-            <tr>
-              <th>Bakery Name</th>
-              <th>Manager Contact</th>
-              <th>Location</th>
-              <th>Plan</th>
-              <th>API Status</th>
-              <th className="text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredClients.map(client => (
-              <tr key={client.id}>
-                <td className="font-semibold text-slate-800">{client.name}</td>
-                <td className="text-gray-600">{client.mobile}</td>
-                <td className="text-gray-500">{client.address}</td>
-                <td>
-                  <span className="saas-status-badge active" style={{ background: client.plan === 'Premium' ? '#fdf2f8' : (client.plan === 'Basic' ? '#eff6ff' : '#ecfdf5'), color: client.plan === 'Premium' ? '#db2777' : (client.plan === 'Basic' ? '#2563eb' : '#059669') }}>
-                    {client.plan}
-                  </span>
-                </td>
-                <td>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: client.waStatus === 'connected' ? '#10b981' : (client.waStatus === 'pending' ? '#f59e0b' : '#ef4444'), fontSize: '0.85rem', fontWeight: '600' }}>
-                    {client.waStatus === 'connected' ? <Wifi size={14}/> : <WifiOff size={14}/>}
-                    {client.waStatus.charAt(0).toUpperCase() + client.waStatus.slice(1)}
-                  </div>
-                </td>
-                <td className="text-right action-cells">
-                  <button className="icon-action-btn" title="Edit Bakery" onClick={() => openEdit(client)}><Edit2 size={16} /></button>
-                  <button className="icon-action-btn delete" title="Delete Bakery" onClick={() => openDelete(client.id)}><Trash2 size={16} /></button>
-                </td>
-              </tr>
-            ))}
-            {filteredClients.length === 0 && (
+        <div className="overflow-x-auto w-full">
+          <table className="premium-table">
+            <thead>
               <tr>
-                <td colSpan="6" className="text-center py-8 text-gray-500">No bakery clients found.</td>
+                <th>Bakery Name</th>
+                <th>Manager Contact</th>
+                <th>Location</th>
+                <th>Plan</th>
+                <th>API Status</th>
+                <th className="text-right">Actions</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredClients.map(client => (
+                <tr key={client.id}>
+                  <td className="font-semibold text-slate-800">{client.name}</td>
+                  <td className="text-gray-600">{client.mobile}</td>
+                  <td className="text-gray-500">{client.address}</td>
+                  <td>
+                    <span className="saas-status-badge active" style={{ background: client.plan === 'Premium' ? '#fdf2f8' : (client.plan === 'Basic' ? '#eff6ff' : '#ecfdf5'), color: client.plan === 'Premium' ? '#db2777' : (client.plan === 'Basic' ? '#2563eb' : '#059669') }}>
+                      {client.plan}
+                    </span>
+                  </td>
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: client.waStatus === 'connected' ? '#10b981' : (client.waStatus === 'pending' ? '#f59e0b' : '#ef4444'), fontSize: '0.85rem', fontWeight: '600' }}>
+                      {client.waStatus === 'connected' ? <Wifi size={14}/> : <WifiOff size={14}/>}
+                      {client.waStatus.charAt(0).toUpperCase() + client.waStatus.slice(1)}
+                    </div>
+                  </td>
+                  <td className="text-right action-cells">
+                    <button className="icon-action-btn" title="Edit Bakery" onClick={() => openEdit(client)}><Edit2 size={16} /></button>
+                    <button className="icon-action-btn delete" title="Delete Bakery" onClick={() => openDelete(client.id)}><Trash2 size={16} /></button>
+                  </td>
+                </tr>
+              ))}
+              {filteredClients.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="text-center py-8 text-gray-500">No bakery clients found.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <ConfirmModal 
