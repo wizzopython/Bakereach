@@ -86,6 +86,8 @@ body {
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 
+.flex-wrap { flex-wrap: wrap; }
+
 .w-full { width: 100%; }
 .h-full { height: 100%; }
 .relative { position: relative; }

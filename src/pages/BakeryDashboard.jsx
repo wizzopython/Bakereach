@@ -770,8 +770,7 @@ const BakeryDashboard = () => {
             <div className="portal-bottom-section flex flex-col gap-6 animate-fade-in">
               <div className="glass-panel p-8" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '24px' }}>
                 <h3 className="section-heading mb-8 flex items-center gap-2" style={{ borderBottom: '1px solid rgba(0,0,0,0.05)', paddingBottom: '16px' }}><Plug size={20}/> Connected Services & Integrations</h3>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
+                <div className="cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                   
                   {/* WhatsApp Integration */}
                   <div className="config-card flex flex-col gap-4" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -964,8 +963,8 @@ const BakeryDashboard = () => {
                         {expandedLogId === log.id && (
                           <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.02)' }}>
                             <td colSpan="6" className="py-4 px-6 rounded-b-xl" style={{ background: 'rgba(248, 250, 252, 0.7)' }}>
-                              <div className="flex gap-6 items-start">
-                                <div className="flex-1">
+                              <div className="flex flex-wrap gap-6 items-start">
+                                <div className="flex-1" style={{ minWidth: '250px' }}>
                                   <h5 className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Message Payload Preview</h5>
                                   <div className="bg-white p-4 rounded-xl shadow-sm text-sm text-slate-700 font-medium" style={{ border: '1px solid rgba(0,0,0,0.05)', position: 'relative' }}>
                                     {log.type === 'Birthday Campaign' ? '🎉 Happy Birthday! Here is 15% off your next cake order. Valid for 48 hours.' : log.type === 'Festival Campaign' ? '🌟 Special Festive Offer: Buy 1 Get 1 Free on selected premium items! Show this message at the counter.' : 'Thank you for your message! Our manager will reply shortly.'}
@@ -973,7 +972,7 @@ const BakeryDashboard = () => {
                                   </div>
                                 </div>
                                 {log.error && (
-                                  <div className="flex-1">
+                                  <div className="flex-1" style={{ minWidth: '250px' }}>
                                     <h5 className="text-xs font-bold text-red-400 mb-2 uppercase tracking-wider">Error Diagnostics</h5>
                                     <div className="bg-red-50 p-4 rounded-xl border border-red-100 text-sm text-red-700 font-mono" style={{ whiteSpace: 'pre-line' }}>
                                       ERROR_CODE: 400_BAD_REQUEST
@@ -1050,7 +1049,7 @@ RESOLUTION: Verify customer phone format or Meta API connection.
               {/* Upgrade Options */}
               <div>
                 <h4 style={{ fontSize: '11px', fontWeight: 'bold', color: '#94a3b8', margin: '0 0 16px 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Available Upgrades</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="cards-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   
                   {/* Growth Tier */}
                   <div style={{ padding: '24px', borderRadius: '16px', border: '2px solid #f1f5f9', background: '#f8fafc', cursor: 'pointer', position: 'relative', overflow: 'hidden', transition: 'border-color 0.2s' }} onClick={(e) => { e.currentTarget.style.borderColor = '#818cf8'; }}>
