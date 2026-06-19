@@ -157,6 +157,8 @@ body {
   color: var(--text-primary);
   font-size: 1rem;
   transition: var(--transition);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-input:focus {
@@ -332,7 +334,9 @@ select.form-input {
   }
   
   .form-grid {
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
   
   .bakery-sidebar.open, .sidebar.open {
