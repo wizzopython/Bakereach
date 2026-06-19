@@ -868,7 +868,7 @@ const BakeryDashboard = () => {
             <div className="portal-bottom-section flex flex-col gap-6 animate-fade-in w-full max-w-[1200px] mx-auto">
               
               {/* Analytics Summary Row */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+              <div className="portal-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
                 <div className="glass-panel p-6 flex items-center gap-4" style={{ borderRadius: '20px', border: '1px solid rgba(255,255,255,0.4)', background: 'linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4))' }}>
                   <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Send size={24}/>
