@@ -84,6 +84,18 @@ body {
 .mb-8 { margin-bottom: 2rem; }
 .mb-10 { margin-bottom: 2.5rem; }
 .text-center { text-align: center; }
+.text-left { text-align: left; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.left-3 { left: 0.75rem; }
+.top-1\/2 { top: 50%; }
+.-translate-y-1\/2 { transform: translateY(-50%); }
+.overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.text-gray-400 { color: #9ca3af; }
+.pl-9 { padding-left: 2.25rem; }
 
 .btn {
   padding: 0.75rem 1.5rem;
