@@ -11,9 +11,6 @@ const Sidebar = ({ onLogout, isOpen, onClose }) => {
           <div className="logo-icon">BR</div>
           <h1 className="logo-text">BakeReach</h1>
         </div>
-        <button className="mobile-sidebar-close" onClick={onClose}>
-          <X size={24} />
-        </button>
       </div>
       
       <nav className="sidebar-nav">

@@ -243,9 +243,6 @@ const BakeryDashboard = () => {
                 <span className="premium-tag sidebar-plan-tag">{bakery.plan} Plan</span>
               </div>
             </div>
-            <button className="mobile-sidebar-close" onClick={() => setIsMobileMenuOpen(false)}>
-              <X size={24} />
-            </button>
           </div>
           <nav className="sidebar-nav">
             <button onClick={() => { setActiveTab('overview'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='overview'?'active':''}`}>
