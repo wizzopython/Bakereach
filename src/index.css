@@ -94,6 +94,8 @@ body {
 .top-1\/2 { top: 50%; }
 .-translate-y-1\/2 { transform: translateY(-50%); }
 .overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.overflow-x-auto table { min-width: 750px; }
+.overflow-x-auto th, .overflow-x-auto td { white-space: nowrap; }
 .text-gray-400 { color: #9ca3af; }
 .pl-9 { padding-left: 2.25rem; }
 
@@ -342,6 +344,7 @@ select.form-input {
   
   .bakery-main-area, .main-content-area {
     padding: 1rem !important;
+    padding-bottom: 5rem !important;
     overflow-y: auto !important;
     flex: 1;
   }
@@ -447,7 +450,8 @@ select.form-input {
   
   .glass-panel .flex.justify-between,
   .config-card .flex.justify-between,
-  .glass-panel .flex.items-center.gap-3 {
+  .glass-panel .flex.items-center.gap-3,
+  .glass-panel .flex.items-center.gap-2 {
     flex-wrap: wrap !important;
     gap: 0.75rem !important;
   }
