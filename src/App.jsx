@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import SuperadminDashboard from './pages/SuperadminDashboard';
 import AutomationSetup from './pages/AutomationSetup';
@@ -10,6 +11,35 @@ import Plans from './pages/Plans';
 import MediaLibrary from './pages/MediaLibrary';
 import SupportTickets from './pages/SupportTickets';
 import BakeryDashboard from './pages/BakeryDashboard';
+
+const SuperadminLayout = ({ children, onLogout }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <div className="app-container">
+      {/* Mobile Header */}
+      <div className="mobile-header">
+        <div className="flex items-center gap-3">
+          <div className="mobile-header-logo flex items-center justify-center bg-white text-orange-600 font-bold rounded-lg shadow-sm" style={{ width: '40px', height: '40px' }}>BR</div>
+          <h1 className="mobile-header-title">BakeReach</h1>
+        </div>
+        <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div className="sidebar-mobile-overlay" onClick={() => setIsMobileMenuOpen(false)}></div>
+      )}
+
+      <Sidebar onLogout={onLogout} isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      <main className="main-content-area">
+        {children}
+      </main>
+    </div>
+  );
+};
 
 const ProtectedSuperadmin = ({ children }) => {
   const isAuth = localStorage.getItem('superadmin_auth') === 'true';
@@ -41,67 +71,49 @@ function App() {
         
         <Route path="/superadmin/dashboard" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <SuperadminDashboard />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <SuperadminDashboard />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
 
         <Route path="/superadmin/automation" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <AutomationSetup />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <AutomationSetup />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
         
         <Route path="/superadmin/customers" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <Customers />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <Customers />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
 
         <Route path="/superadmin/plans" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <Plans />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <Plans />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
         
         <Route path="/superadmin/media" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <MediaLibrary />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <MediaLibrary />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
 
         <Route path="/superadmin/support" element={
           <ProtectedSuperadmin>
-            <div className="app-container">
-              <Sidebar onLogout={handleLogout} />
-              <main className="main-content-area">
-                <SupportTickets />
-              </main>
-            </div>
+            <SuperadminLayout onLogout={handleLogout}>
+              <SupportTickets />
+            </SuperadminLayout>
           </ProtectedSuperadmin>
         } />
         

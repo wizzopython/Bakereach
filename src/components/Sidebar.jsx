@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Workflow, Store, Settings, LogOut, Users, CreditCard, Image as ImageIcon, HeadphonesIcon } from 'lucide-react';
 import './Sidebar.css';
 
-const Sidebar = ({ onLogout }) => {
+const Sidebar = ({ onLogout, isOpen, onClose }) => {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="logo-icon">BR</div>
         <h1 className="logo-text">BakeReach</h1>
@@ -13,27 +13,27 @@ const Sidebar = ({ onLogout }) => {
       
       <nav className="sidebar-nav">
         <div className="nav-section">MAIN</div>
-        <NavLink to="/superadmin/dashboard" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} end>
+        <NavLink to="/superadmin/dashboard" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} end onClick={onClose}>
           <LayoutDashboard size={20} />
           <span>Dashboard</span>
         </NavLink>
-        <NavLink to="/superadmin/customers" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`}>
+        <NavLink to="/superadmin/customers" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
           <Users size={20} />
           <span>Clients</span>
         </NavLink>
-        <NavLink to="/superadmin/plans" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`}>
+        <NavLink to="/superadmin/plans" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
           <CreditCard size={20} />
           <span>Subscription Plans</span>
         </NavLink>
-        <NavLink to="/superadmin/automation" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`}>
+        <NavLink to="/superadmin/automation" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
           <Workflow size={20} />
           <span>Automation Flow</span>
         </NavLink>
-        <NavLink to="/superadmin/media" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`}>
+        <NavLink to="/superadmin/media" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
           <ImageIcon size={20} />
           <span>Media Library</span>
         </NavLink>
-        <NavLink to="/superadmin/support" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`}>
+        <NavLink to="/superadmin/support" className={({isActive}) => `nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
           <HeadphonesIcon size={20} />
           <span>Support Tickets</span>
         </NavLink>

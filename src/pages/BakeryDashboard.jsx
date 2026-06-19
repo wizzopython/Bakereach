@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, Plug, Users, MessageSquare, AlertCircle, HelpCircle, Send, Settings, UserPlus, Inbox, Camera, Calendar, Gift, Wand2, Loader2, Play, CreditCard, Activity, TrendingUp, Store, Trash2, Edit2, Search, Bot, CheckCheck, Paperclip, MoreVertical, ClipboardList, CheckCircle, MapPin, Mail, Phone, ShieldCheck, Check, X } from 'lucide-react';
+import { LogOut, Plug, Users, MessageSquare, AlertCircle, HelpCircle, Send, Settings, UserPlus, Inbox, Camera, Calendar, Gift, Wand2, Loader2, Play, CreditCard, Activity, TrendingUp, Store, Trash2, Edit2, Search, Bot, CheckCheck, Paperclip, MoreVertical, ClipboardList, CheckCircle, MapPin, Mail, Phone, ShieldCheck, Check, X, Menu } from 'lucide-react';
 import './BakeryDashboard.css';
 
 
@@ -106,6 +106,7 @@ const BakeryDashboard = () => {
   const navigate = useNavigate();
   const [bakery, setBakery] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Slide state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -216,7 +217,23 @@ const BakeryDashboard = () => {
       <div className="dashboard-bg-blur" style={{ backgroundImage: `url(${bakery.banner})` }}></div>
       <div className="dashboard-bg-overlay"></div>
 
-      <aside className="bakery-sidebar">
+      {/* Mobile Header (Visible only on small screens) */}
+      <div className="mobile-header">
+        <div className="flex items-center gap-3">
+          <img src={bakery.banner} alt="Logo" className="mobile-header-logo" />
+          <h1 className="mobile-header-title">{bakery.name}</h1>
+        </div>
+        <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div className="sidebar-mobile-overlay" onClick={() => setIsMobileMenuOpen(false)}></div>
+      )}
+
+      <aside className={`bakery-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div>
           <div className="sidebar-header">
             <img src={bakery.banner} alt="Logo" className="sidebar-logo" />
@@ -226,23 +243,23 @@ const BakeryDashboard = () => {
             </div>
           </div>
           <nav className="sidebar-nav">
-            <button onClick={() => setActiveTab('overview')} className={`sidebar-tab ${activeTab==='overview'?'active':''}`}>
+            <button onClick={() => { setActiveTab('overview'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='overview'?'active':''}`}>
               <Users size={18}/> Dashboard
             </button>
-            <button onClick={() => setActiveTab('configuration')} className={`sidebar-tab ${activeTab==='configuration'?'active':''}`}>
+            <button onClick={() => { setActiveTab('configuration'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='configuration'?'active':''}`}>
               <Settings size={18}/> Automations
             </button>
-            <button onClick={() => setActiveTab('customers')} className={`sidebar-tab ${activeTab==='customers'?'active':''}`}>
+            <button onClick={() => { setActiveTab('customers'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='customers'?'active':''}`}>
               <UserPlus size={18}/> Customer Data
             </button>
-            <button onClick={() => setActiveTab('inbox')} className={`sidebar-tab flex justify-between items-center ${activeTab==='inbox'?'active':''}`}>
+            <button onClick={() => { setActiveTab('inbox'); setIsMobileMenuOpen(false); }} className={`sidebar-tab flex justify-between items-center ${activeTab==='inbox'?'active':''}`}>
               <div className="flex items-center gap-3"><Inbox size={18}/> Chat Inbox</div>
               <span className="badge-notification">2</span>
             </button>
-            <button onClick={() => setActiveTab('logs')} className={`sidebar-tab ${activeTab==='logs'?'active':''}`}>
+            <button onClick={() => { setActiveTab('logs'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='logs'?'active':''}`}>
               <ClipboardList size={18}/> Dispatch Logs
             </button>
-            <button onClick={() => setActiveTab('integrations')} className={`sidebar-tab ${activeTab==='integrations'?'active':''}`}>
+            <button onClick={() => { setActiveTab('integrations'); setIsMobileMenuOpen(false); }} className={`sidebar-tab ${activeTab==='integrations'?'active':''}`}>
               <Plug size={18}/> Integrations
             </button>
           </nav>
