@@ -1,0 +1,320 @@
+.workflow-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .workflow-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.timeline-item:hover, .timeline-item.active, .timeline-item.completed {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.timeline-item.active {
+  transform: scale(1.02) translateX(10px);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 24px;
+  top: 48px;
+  bottom: -32px;
+  width: 3px;
+  background: var(--bg-tertiary);
+  z-index: 1;
+}
+
+.timeline-item:last-child .timeline-connector {
+  display: none;
+}
+
+.timeline-item.completed .timeline-connector {
+  background: var(--accent-primary);
+}
+
+.timeline-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  padding-top: 0.5rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+  font-family: 'Fredoka', sans-serif;
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Simulation Panel */
+.workflow-simulation {
+  background-image: url('/realistic_bakery_bg.png');
+  background-size: cover;
+  background-position: center 30%;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.workflow-simulation::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(63, 42, 36, 0.9), rgba(63, 42, 36, 0.7));
+  z-index: 0;
+}
+
+.simulation-screen {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+}
+
+.sim-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sim-circle {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.sim-title {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.sim-code-block {
+  background: rgba(0,0,0,0.6);
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: monospace;
+  color: #a7f3d0;
+  font-size: 0.9rem;
+  text-align: left;
+  white-space: pre-line;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.sim-app-ui {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.sim-header {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--accent-primary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.sim-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sim-banner-preview {
+  background: var(--bg-primary);
+  border: 2px dashed var(--accent-tertiary);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+.sim-input-mock {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-align: center;
+  font-style: italic;
+}
+
+.sim-btn {
+  background: var(--accent-secondary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+}
+
+.sim-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sim-card {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--success);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.whatsapp-mock {
+  background: #efeae2;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.wa-header {
+  background: #008069;
+  padding: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+.wa-avatar {
+  width: 36px;
+  height: 36px;
+  background: #e2e8f0;
+  color: #475569;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.wa-body {
+  padding: 1.5rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  overflow-y: auto;
+}
+
+.wa-msg {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.wa-msg.incoming {
+  background: white;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+.wa-msg.outgoing {
+  background: #d9fdd3;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+}
+
+.wa-img-mock {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+/* Utilities for JSX */
+.w-full { width: 100%; }
+.h-24 { height: 6rem; }
+.object-cover { object-fit: cover; }
+.rounded-md { border-radius: 0.375rem; }
+.bg-pink-100 { background-color: #fce7f3; }
+.text-pink-600 { color: #db2777; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.rounded { border-radius: 0.25rem; }
+
+.sim-controls {
+  position: relative;
+  z-index: 2;
+}
