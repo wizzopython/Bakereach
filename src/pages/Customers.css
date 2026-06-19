@@ -103,6 +103,8 @@
   font-size: 0.95rem;
   color: #0f172a;
   transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-field input:focus, .input-field select:focus {
