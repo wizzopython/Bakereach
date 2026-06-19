@@ -184,6 +184,10 @@ const BakeryDashboard = () => {
     if (saved) {
       const bakeries = JSON.parse(saved);
       setBakery(bakeries[0] || null);
+    } else {
+      const fallbackBakery = { id: 1, name: "Sweet Delights Bakery", address: "123 Main St, NY", mobile: "+1 234 567 8900", plan: "Premium", status: "Active", banner: "/birthday_cake_banner.png", validUntil: "2027-06-19", isBlocked: false, customersCount: 1240, messagesSent: 14290, messageLimit: 20000, waStatus: 'connected' };
+      setBakery(fallbackBakery);
+      localStorage.setItem('global_bakeries', JSON.stringify([fallbackBakery]));
     }
   }, []);
 
